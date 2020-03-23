@@ -2,7 +2,7 @@
 {
     public class Duel
     {
-        public EPhase Phase { get; } = EPhase.Standby;
+        public Phase Phase { get; } = Phase.Standby;
         public uint Turn { get; set; } = 1;
     }
 }

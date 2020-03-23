@@ -1,6 +1,6 @@
 ﻿namespace DuelEngine
 {
-    public enum EPhase
+    public enum Phase
     {
         Draw,
         Standby,

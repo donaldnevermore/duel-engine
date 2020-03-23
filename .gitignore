@@ -6,3 +6,6 @@
 # Caches
 bin
 obj
+
+# User-specific files
+*.user
