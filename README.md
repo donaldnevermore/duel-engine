@@ -1,6 +1,7 @@
 # Duel engine
 
-An open source game inspired by `Yu-Gi-Oh! Duel Monster`.
+An open-source duel engine based on `Yu-Gi-Oh! Rush Duel`.
+You can find helpful information at [https://yugipedia.com/wiki/Yu-Gi-Oh!_Rush_Duel](https://yugipedia.com/wiki/Yu-Gi-Oh!_Rush_Duel).
 
 # Status
 
