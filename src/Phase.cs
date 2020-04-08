@@ -3,10 +3,8 @@
     public enum Phase
     {
         Draw,
-        Standby,
-        Main1,
+        Main,
         Battle,
-        Main2,
         End
     }
 }
