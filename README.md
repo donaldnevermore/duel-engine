@@ -15,6 +15,12 @@ var player1 = new Player();
 var player2 = new Player();
 player1.Join(duel);
 player2.Join(duel);
+
+player1.InitialDraw();
+player2.InitialDraw();
+player1.DrawPhase();
+player1.Draw();
+
 var monster = new MonsterCard(4, 1000, 1000);
 player1.AddHandCard(monster);
 player1.Summon(monster, 0);
