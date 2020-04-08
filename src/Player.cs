@@ -5,14 +5,16 @@ namespace DuelEngine
 {
     public class Player
     {
+        private readonly uint _initialDrawNumber = 4;
+        private readonly uint _drawLimit = 5;
         public int LifePoint { get; set; } = 8000;
         public List<MonsterCard> Hand { get; } = new List<MonsterCard>();
-        public MonsterCard[] MonsterZone { get; } = new MonsterCard[5];
+        public MonsterCard[] MonsterZone { get; } = new MonsterCard[3];
         public List<MonsterCard> Graveyard { get; } = new List<MonsterCard>();
-        public Duel DuelState { get; set; }
+        private Duel _duel;
 
         /// <summary>
-        /// Summon a monster to your monster zone
+        /// Summon a monster to your monster zone.
         /// </summary>
         /// <param name="monster"></param>
         /// <param name="position"></param>
@@ -24,13 +26,69 @@ namespace DuelEngine
 
         public void Join(Duel duel)
         {
-            DuelState = duel;
+            _duel = duel;
+        }
+
+        public void DrawPhase()
+        {
+            _duel.Phase = Phase.Draw;
+        }
+
+        public void MainPhase()
+        {
+            _duel.Phase = Phase.Main;
+        }
+
+        public void BattlePhase()
+        {
+            _duel.Phase = Phase.Battle;
+        }
+
+        public void EndPhase()
+        {
+            _duel.Phase = Phase.End;
         }
 
         /// <summary>
-        /// Draw a card to your hand
+        /// The draw before game start
         /// </summary>
-        /// <param name="monster"></param>
+        public void InitialDraw()
+        {
+            for (int i = 0; i < _initialDrawNumber; i++)
+            {
+                // TODO: remove dummy card
+                var monster = new MonsterCard(1, 0, 0);
+                AddHandCard(monster);
+            }
+        }
+
+        /// <summary>
+        /// If your hand cards is less than _drawLimit, draw up to _drawLimit;
+        /// Else, draw 1 card.
+        /// </summary>
+        public void Draw()
+        {
+            if (Hand.Count < _drawLimit)
+            {
+                while (Hand.Count < _drawLimit)
+                {
+                    // TODO: remove dummy card
+                    var monster = new MonsterCard(1, 0, 0);
+                    AddHandCard(monster);
+                }
+            }
+            else
+            {
+                // TODO: remove dummy card
+                var monster = new MonsterCard(1, 0, 0);
+                AddHandCard(monster);
+            }
+        }
+
+        /// <summary>
+        /// Draw a card to your hand.
+        /// </summary>
+        /// <param name="monster">The monster.</param>
         public void AddHandCard(MonsterCard monster)
         {
             Hand.Add(monster);
@@ -38,7 +96,8 @@ namespace DuelEngine
 
         public void TurnEnd()
         {
-            DuelState.Turn++;
+            EndPhase();
+            _duel.Turn++;
         }
 
         /// <summary>
@@ -74,7 +133,7 @@ namespace DuelEngine
         }
 
         /// <summary>
-        /// Destroy a monster and send it to your graveyard
+        /// Destroy a monster and send it to your graveyard.
         /// </summary>
         /// <param name="monsterIndex"></param>
         public void Destroy(int monsterIndex)
