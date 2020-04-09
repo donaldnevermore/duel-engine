@@ -28,13 +28,20 @@ player1.Summon(monster, 0);
 
 # TODO
 
-[x] Summon a monster
-[x] Monster attack
-[] Take turns
-[] Monster effect
-[] Phases
-[] Field magic zone
-[] Magic card & trap card
+- [x] Initial preparation
+- [x] Summon a monster
+- [x] Monster attack
+- [ ] Take turns
+- [ ] Monster effect
+- [ ] Phases
+- [ ] Field magic zone
+- [ ] Magic card
+- [ ] Trap card
+- [ ] Magic & trap zone
+- [ ] Field magic zone
+- [ ] Draw cards
+- [ ] Deck
+- [ ] Graveyard
 
 # Contribution
 
