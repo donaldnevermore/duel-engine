@@ -1,7 +1,5 @@
-﻿namespace DuelEngine
-{
-    public enum Phase
-    {
+﻿namespace DuelEngine {
+    public enum Phase {
         Draw,
         Main,
         Battle,

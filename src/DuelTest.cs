@@ -1,75 +1,69 @@
 ﻿using NUnit.Framework;
 using System.Linq;
 
-namespace DuelEngine.Test
-{
+namespace DuelEngine.Test {
     [TestFixture]
-    public class DuelTest
-    {
-        private Duel _duel;
-        private Player _player1;
-        private Player _player2;
+    public class DuelTest {
+        private Duel duel;
+        private Player player1;
+        private Player player2;
 
         [SetUp]
-        public void SetUp()
-        {
-            _duel = new Duel();
-            _player1 = new Player();
-            _player2 = new Player();
-            _player1.Join(_duel);
-            _player2.Join(_duel);
-            _player1.InitialDraw();
-            _player2.InitialDraw();
-            _player1.DrawPhase();
-            _player1.Draw();
+        public void SetUp() {
+            duel = new Duel();
+            player1 = new Player();
+            player2 = new Player();
+            player1.Join(duel);
+            player2.Join(duel);
+            player1.InitialDraw();
+            player2.InitialDraw();
+            player1.DrawPhase();
+            player1.Draw();
         }
 
         [Test]
-        public void TestSummon()
-        {
-            _player1.MainPhase();
+        public void TestSummon() {
+            player1.MainPhase();
             var monster = new MonsterCard(4, 1000, 1000);
-            _player1.AddHandCard(monster);
-            _player1.Summon(monster, 0);
-            Assert.AreEqual(monster, _player1.MonsterZone.First());
+            player1.AddHandCard(monster);
+            player1.Summon(monster, 0);
+            Assert.AreEqual(monster, player1.MonsterZone.First());
         }
 
         [Test]
-        public void TestHigherAttack()
-        {
+        public void TestHigherAttack() {
             var monster1 = new MonsterCard(4, 1000, 1000);
-            _player1.AddHandCard(monster1);
+            player1.AddHandCard(monster1);
             var monster2 = new MonsterCard(4, 1500, 500);
-            _player2.AddHandCard(monster2);
+            player2.AddHandCard(monster2);
 
-            _player1.Summon(monster1, 0);
-            _player1.TurnEnd();
-            Assert.AreEqual(2, _duel.Turn);
+            player1.Summon(monster1, 0);
+            player1.TurnEnd();
+            Assert.AreEqual(2, duel.Turn);
 
-            _player2.Summon(monster2, 0);
-            _player2.Attack(_player1, 0, 0);
-            Assert.AreEqual(7500, _player1.LifePoint);
-            Assert.AreEqual(null, _player1.MonsterZone[0]);
-            Assert.AreSame(monster1, _player1.Graveyard.First());
+            player2.Summon(monster2, 0);
+            player2.Attack(player1, 0, 0);
+            Assert.AreEqual(7500, player1.LifePoint);
+            Assert.AreEqual(null, player1.MonsterZone[0]);
+            Assert.AreSame(monster1, player1.Graveyard.First());
         }
 
         [Test]
-        public void TestLowerAttack()
-        {
+        public void TestLowerAttack() {
             var monster1 = new MonsterCard(4, 1500, 500);
-            _player1.AddHandCard(monster1);
+            player1.AddHandCard(monster1);
             var monster2 = new MonsterCard(4, 1000, 1000);
-            _player2.AddHandCard(monster2);
+            player2.AddHandCard(monster2);
 
-            _player1.Summon(monster1, 0);
-            _player1.TurnEnd();
-            Assert.AreEqual(_duel.Turn, 2);
+            player1.Summon(monster1, 0);
+            player1.TurnEnd();
+            Assert.AreEqual(duel.Turn, 2);
 
-            _player2.Summon(monster2, 0);
-            _player2.Attack(_player1, 0, 0);
-            Assert.AreEqual(7500, _player2.LifePoint);
-            Assert.AreEqual(null, _player2.MonsterZone[0]);
-            Assert.AreSame(monster2, _player2.Graveyard.First());
+            player2.Summon(monster2, 0);
+            player2.Attack(player1, 0, 0);
+            Assert.AreEqual(7500, player2.LifePoint);
+            Assert.AreEqual(null, player2.MonsterZone[0]);
+            Assert.AreSame(monster2, player2.Graveyard.First());
         }
     }
 }
