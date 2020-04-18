@@ -3,12 +3,10 @@ using System.Collections.Generic;
 
 namespace DuelEngine {
     public class Player {
-        private readonly uint initialDrawNumber = 4;
-        private readonly uint drawLimit = 5;
-        public int LifePoint { get; set; } = 8000;
+        public int LifePoint { get; set; }
         public List<MonsterCard> Hand { get; } = new List<MonsterCard>();
-        public MonsterCard[] MonsterZone { get; } = new MonsterCard[3];
         public List<MonsterCard> Graveyard { get; } = new List<MonsterCard>();
+        public MonsterCard[] MonsterZone { get; set; }
         private Duel duel;
 
         /// <summary>
@@ -21,8 +19,14 @@ namespace DuelEngine {
             MonsterZone[position] = monster;
         }
 
+        /// <summary>
+        /// Join in a game and initial LifePoint and MonsterZone
+        /// </summary>
+        /// <param name="duel"></param>
         public void Join(Duel duel) {
             this.duel = duel;
+            LifePoint = duel.LifePoint;
+            MonsterZone = new MonsterCard[duel.ZoneNumber];
         }
 
         public void DrawPhase() {
@@ -45,7 +49,7 @@ namespace DuelEngine {
         /// The draw before game start
         /// </summary>
         public void InitialDraw() {
-            for (int i = 0; i < initialDrawNumber; i++) {
+            for (int i = 0; i < duel.InitialDrawNumber; i++) {
                 // TODO: remove dummy card
                 var monster = new MonsterCard(1, 0, 0);
                 AddHandCard(monster);
@@ -57,8 +61,8 @@ namespace DuelEngine {
         /// Else, draw 1 card.
         /// </summary>
         public void Draw() {
-            if (Hand.Count < drawLimit) {
-                while (Hand.Count < drawLimit) {
+            if (Hand.Count < duel.DrawLimit) {
+                while (Hand.Count < duel.DrawLimit) {
                     // TODO: remove dummy card
                     var monster = new MonsterCard(1, 0, 0);
                     AddHandCard(monster);

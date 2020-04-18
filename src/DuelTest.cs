@@ -10,7 +10,7 @@ namespace DuelEngine.Test {
 
         [SetUp]
         public void SetUp() {
-            duel = new Duel();
+            duel = new Duel {InitialDrawNumber = 4, DrawLimit = 5, ZoneNumber = 3, LifePoint = 8000};
             player1 = new Player();
             player2 = new Player();
             player1.Join(duel);

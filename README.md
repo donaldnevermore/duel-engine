@@ -10,9 +10,10 @@ At a early stage.
 # A simple example
 
 ```csharp
-var duel = new Duel();
+var duel = new Duel {InitialDrawNumber = 4, DrawLimit = 5, ZoneNumber = 3, LifePoint = 8000};
 var player1 = new Player();
 var player2 = new Player();
+
 player1.Join(duel);
 player2.Join(duel);
 
