@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace DuelEngine {
     public class Player {
+        public List<Card> deck { get; set; }
         public int LifePoint { get; set; }
         public List<MonsterCard> Hand { get; } = new List<MonsterCard>();
         public List<MonsterCard> Graveyard { get; } = new List<MonsterCard>();

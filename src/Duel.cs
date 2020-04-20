@@ -6,6 +6,7 @@
         public uint DrawLimit { get; set; }
         public uint ZoneNumber { get; set; }
         public int LifePoint { get; set; }
+        public uint DeckLimit { get; set; }
 
         public bool IsFirstTurn() {
             return Turn == 1;
