@@ -5,14 +5,21 @@ You can find helpful information at [https://yugipedia.com/wiki/Yu-Gi-Oh!_Rush_D
 
 # Status
 
-At a early stage.
+At an early stage.
 
 # A simple example
 
 ```csharp
 var duel = new Duel {InitialDrawNumber = 4, DrawLimit = 5, ZoneNumber = 3, LifePoint = 8000};
-var player1 = new Player();
-var player2 = new Player();
+
+var deck1 = new List<ICard> {
+                new DarkSorcerer(), new DarkSorcerer(), new DarkSorcerer(), new Wolf(), new Wolf(), new Wolf()
+            };
+var deck2 = new List<ICard> {
+    new DarkSorcerer(), new DarkSorcerer(), new DarkSorcerer(), new Wolf(), new Wolf(), new Wolf()
+};
+var player1 = new Player {Deck = deck1};
+var player2 = new Player {Deck = deck2};
 
 player1.Join(duel);
 player2.Join(duel);
@@ -22,8 +29,8 @@ player2.InitialDraw();
 player1.DrawPhase();
 player1.Draw();
 
-var monster = new MonsterCard(4, 1000, 1000);
-player1.AddHandCard(monster);
+player1.MainPhase();
+var monster = (IMonster) player1.Hand[0];
 player1.Summon(monster, 0);
 ```
 

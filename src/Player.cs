@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using DuelEngine.Cards;
 
 namespace DuelEngine {
     public class Player {
-        public List<Card> deck { get; set; }
+        public List<ICard> Deck { get; set; }
         public int LifePoint { get; set; }
-        public List<MonsterCard> Hand { get; } = new List<MonsterCard>();
-        public List<MonsterCard> Graveyard { get; } = new List<MonsterCard>();
-        public MonsterCard[] MonsterZone { get; set; }
+        public List<ICard> Hand { get; } = new List<ICard>();
+        public List<ICard> Graveyard { get; } = new List<ICard>();
+        public IMonster[] MonsterZone { get; set; }
         private Duel duel;
 
         /// <summary>
@@ -15,7 +17,7 @@ namespace DuelEngine {
         /// </summary>
         /// <param name="monster"></param>
         /// <param name="position"></param>
-        public void Summon(MonsterCard monster, int position) {
+        public void Summon(IMonster monster, int position) {
             Hand.Remove(monster);
             MonsterZone[position] = monster;
         }
@@ -27,7 +29,7 @@ namespace DuelEngine {
         public void Join(Duel duel) {
             this.duel = duel;
             LifePoint = duel.LifePoint;
-            MonsterZone = new MonsterCard[duel.ZoneNumber];
+            MonsterZone = new IMonster[duel.ZoneNumber];
         }
 
         public void DrawPhase() {
@@ -51,9 +53,7 @@ namespace DuelEngine {
         /// </summary>
         public void InitialDraw() {
             for (int i = 0; i < duel.InitialDrawNumber; i++) {
-                // TODO: remove dummy card
-                var monster = new MonsterCard(1, 0, 0);
-                AddHandCard(monster);
+                DrawOne();
             }
         }
 
@@ -64,24 +64,26 @@ namespace DuelEngine {
         public void Draw() {
             if (Hand.Count < duel.DrawLimit) {
                 while (Hand.Count < duel.DrawLimit) {
-                    // TODO: remove dummy card
-                    var monster = new MonsterCard(1, 0, 0);
-                    AddHandCard(monster);
+                    DrawOne();
                 }
             }
             else {
-                // TODO: remove dummy card
-                var monster = new MonsterCard(1, 0, 0);
-                AddHandCard(monster);
+                DrawOne();
             }
+        }
+
+        private void DrawOne() {
+            var card = Deck.First();
+            Deck.Remove(card);
+            AddHand(card);
         }
 
         /// <summary>
         /// Draw a card to your hand.
         /// </summary>
-        /// <param name="monster">The monster.</param>
-        public void AddHandCard(MonsterCard monster) {
-            Hand.Add(monster);
+        /// <param name="card">The card.</param>
+        public void AddHand(ICard card) {
+            Hand.Add(card);
         }
 
         public void TurnEnd() {
@@ -100,8 +102,8 @@ namespace DuelEngine {
         /// <param name="monsterIndex"></param>
         /// <param name="targetIndex"></param>
         public void Attack(Player opponent, int monsterIndex, int targetIndex) {
-            MonsterCard monster = MonsterZone[monsterIndex];
-            MonsterCard targetMonster = opponent.MonsterZone[targetIndex];
+            IMonster monster = MonsterZone[monsterIndex];
+            IMonster targetMonster = opponent.MonsterZone[targetIndex];
             int amount = monster.Attack - targetMonster.Attack;
             if (amount > 0) {
                 opponent.LifePoint -= amount;
@@ -122,7 +124,7 @@ namespace DuelEngine {
         /// </summary>
         /// <param name="monsterIndex"></param>
         public void Destroy(int monsterIndex) {
-            MonsterCard monster = MonsterZone[monsterIndex];
+            IMonster monster = MonsterZone[monsterIndex];
             MonsterZone[monsterIndex] = null;
             Graveyard.Add(monster);
         }
