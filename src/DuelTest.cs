@@ -15,10 +15,24 @@ namespace DuelEngine.Test {
         [SetUp]
         public void SetUp() {
             deck1 = new List<ICard> {
-                new DarkSorcerer(), new DarkSorcerer(), new DarkSorcerer(), new Wolf(), new Wolf(), new Wolf()
+                new DarkSorcerer(),
+                new SpellArcher(),
+                new MysticDealer(),
+
+                new DarkSorcerer(),
+                new DarkSorcerer(),
+                new SpellArcher(),
+                new SpellArcher()
             };
             deck2 = new List<ICard> {
-                new DarkSorcerer(), new DarkSorcerer(), new DarkSorcerer(), new Wolf(), new Wolf(), new Wolf()
+                new DarkSorcerer(),
+                new SpellArcher(),
+                new MysticDealer(),
+
+                new DarkSorcerer(),
+                new DarkSorcerer(),
+                new SpellArcher(),
+                new SpellArcher()
             };
             duel = new Duel {InitialDrawNumber = 4, DrawLimit = 5, ZoneNumber = 3, LifePoint = 8000};
             player1 = new Player {Deck = deck1};
@@ -36,39 +50,46 @@ namespace DuelEngine.Test {
         [Test]
         public void TestSummon() {
             player1.MainPhase();
-            var monster = (IMonster) player1.Hand[0];
+            var monster = (IMonsterCard) player1.Hand[0];
             player1.Summon(monster, 0);
             Assert.AreEqual(monster, player1.MonsterZone[0]);
         }
 
         [Test]
-        public void TestHigherAttack() {
-            var monster1 = (IMonster) player1.Hand[3];
-            player1.Summon(monster1, 0);
+        public void TestTakeTurns() {
             player1.TurnEnd();
             Assert.AreEqual(2, duel.Turn);
 
-            var monster2 = (IMonster) player2.Hand[0];
+            player2.TurnEnd();
+            Assert.AreEqual(3, duel.Turn);
+        }
+
+        [Test]
+        public void TestHigherAttack() {
+            var monster1 = (IMonsterCard) player1.Hand[1];
+            player1.Summon(monster1, 0);
+            player1.TurnEnd();
+
+            var monster2 = (IMonsterCard) player2.Hand[0];
             player2.Summon(monster2, 0);
             player2.Attack(player1, 0, 0);
-            Assert.AreEqual(7600, player1.LifePoint);
+
+            Assert.AreEqual(7500, player1.LifePoint);
             Assert.AreEqual(null, player1.MonsterZone[0]);
             Assert.AreSame(monster1, player1.Graveyard[0]);
         }
 
         [Test]
         public void TestLowerAttack() {
-            var monster1 = (IMonster) player1.Hand[0];
-            player1.AddHand(monster1);
-            var monster2 = (IMonster) player2.Hand[3];
-            player2.AddHand(monster2);
-
+            var monster1 = (IMonsterCard) player1.Hand[0];
             player1.Summon(monster1, 0);
             player1.TurnEnd();
 
+            var monster2 = (IMonsterCard) player2.Hand[1];
             player2.Summon(monster2, 0);
             player2.Attack(player1, 0, 0);
-            Assert.AreEqual(7600, player2.LifePoint);
+
+            Assert.AreEqual(7500, player2.LifePoint);
             Assert.AreEqual(null, player2.MonsterZone[0]);
             Assert.AreSame(monster2, player2.Graveyard[0]);
         }

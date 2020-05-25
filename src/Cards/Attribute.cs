@@ -1,4 +1,4 @@
-﻿namespace DuelEngine {
+﻿namespace DuelEngine.Cards {
     public enum Attribute {
         Light,
         Dark,

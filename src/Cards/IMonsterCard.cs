@@ -1,5 +1,5 @@
 ﻿namespace DuelEngine.Cards {
-    public interface IMonster : ICard {
+    public interface IMonsterCard : ICard {
         Attribute Attribute { get; set; }
         bool IsLegend { get; set; }
         int Level { get; set; }

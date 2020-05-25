@@ -39,7 +39,7 @@ player1.Summon(monster, 0);
 - [x] Initial preparation
 - [x] Summon a monster
 - [x] Monster attack
-- [ ] Take turns
+- [x] Take turns
 - [ ] Monster effect
 - [ ] Phases
 - [ ] Field magic zone

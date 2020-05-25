@@ -1,8 +1,7 @@
-﻿using System;
-using DuelEngine.Cards;
+﻿using DuelEngine.Cards;
 
 namespace DuelEngine.MonsterCards {
-    public sealed class DarkSorcerer : IMonster {
+    public sealed class DarkSorcerer : IMonsterCard {
         public string Name { get; set; } = "Dark Sorcerer";
         public string ID { get; set; } = "120105005";
         public string Text { get; set; } = "abc";
