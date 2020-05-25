@@ -13,8 +13,8 @@ At an early stage.
 var duel = new Duel {InitialDrawNumber = 4, DrawLimit = 5, ZoneNumber = 3, LifePoint = 8000};
 
 var deck1 = new List<ICard> {
-                new DarkSorcerer(), new DarkSorcerer(), new DarkSorcerer(), new Wolf(), new Wolf(), new Wolf()
-            };
+    new DarkSorcerer(), new DarkSorcerer(), new DarkSorcerer(), new Wolf(), new Wolf(), new Wolf()
+};
 var deck2 = new List<ICard> {
     new DarkSorcerer(), new DarkSorcerer(), new DarkSorcerer(), new Wolf(), new Wolf(), new Wolf()
 };
