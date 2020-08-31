@@ -53,4 +53,4 @@ player1.Summon(monster, 0);
 
 # Contribution
 
-Please feel welcome to open a issue or pull request.
+Please feel welcome to open an issue or pull request.
