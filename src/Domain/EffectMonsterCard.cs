@@ -1,5 +1,5 @@
-﻿namespace DuelEngine.Cards {
-    public interface IEffectMonsterCard : IMonsterCard {
+﻿namespace DuelEngine.Domain {
+    public interface EffectMonsterCard : MonsterCard {
         void Effect(Player controller, Player opponent);
         bool CanActivate(Player controller, Player opponent);
     }

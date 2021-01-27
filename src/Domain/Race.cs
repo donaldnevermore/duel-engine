@@ -1,4 +1,4 @@
-﻿namespace DuelEngine.Cards {
+﻿namespace DuelEngine.Domain {
     public enum Race {
         Magician
     }

@@ -9,3 +9,5 @@ obj
 
 # User-specific files
 *.user
+
+.history

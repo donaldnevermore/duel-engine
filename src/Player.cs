@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DuelEngine.Cards;
+using DuelEngine.Domain;
 
 namespace DuelEngine {
     public class Player {
-        public List<ICard> Deck { get; set; }
+        public List<Card> Deck { get; set; }
         public int LifePoint { get; set; }
-        public List<ICard> Hand { get; } = new List<ICard>();
-        public List<ICard> Graveyard { get; } = new List<ICard>();
-        public IMonsterCard[] MonsterZone { get; set; }
+        public List<Card> Hand { get; } = new List<Card>();
+        public List<Card> Graveyard { get; } = new List<Card>();
+        public MonsterCard[] MonsterZone { get; set; }
         public Duel Duel { get; set; }
         public event EventHandler SelectMonsterEvent;
 
@@ -18,7 +18,7 @@ namespace DuelEngine {
         /// </summary>
         /// <param name="monster"></param>
         /// <param name="position"></param>
-        public void Summon(IMonsterCard monster, int position) {
+        public void Summon(MonsterCard monster, int position) {
             Hand.Remove(monster);
             MonsterZone[position] = monster;
         }
@@ -30,7 +30,7 @@ namespace DuelEngine {
         public void Join(Duel duel) {
             this.Duel = duel;
             LifePoint = duel.LifePoint;
-            MonsterZone = new IMonsterCard[duel.ZoneNumber];
+            MonsterZone = new MonsterCard[duel.ZoneNumber];
         }
 
         public void DrawPhase() {
@@ -77,7 +77,7 @@ namespace DuelEngine {
             for (int i = 0; i < number; i++) {
                 var card = Deck.First();
                 Deck.Remove(card);
-                AddHand(card);
+                AddToHand(card);
             }
         }
 
@@ -85,7 +85,7 @@ namespace DuelEngine {
         /// Draw a card to your hand.
         /// </summary>
         /// <param name="card">The card.</param>
-        public void AddHand(ICard card) {
+        public void AddToHand(Card card) {
             Hand.Add(card);
         }
 
@@ -105,8 +105,8 @@ namespace DuelEngine {
         /// <param name="monsterIndex"></param>
         /// <param name="targetIndex"></param>
         public void Attack(Player opponent, int monsterIndex, int targetIndex) {
-            IMonsterCard monster = MonsterZone[monsterIndex];
-            IMonsterCard targetMonster = opponent.MonsterZone[targetIndex];
+            MonsterCard monster = MonsterZone[monsterIndex];
+            MonsterCard targetMonster = opponent.MonsterZone[targetIndex];
             int amount = monster.Attack - targetMonster.Attack;
             if (amount > 0) {
                 opponent.LifePoint -= amount;
@@ -127,13 +127,13 @@ namespace DuelEngine {
         /// </summary>
         /// <param name="monsterIndex"></param>
         public void Destroy(int monsterIndex) {
-            IMonsterCard monster = MonsterZone[monsterIndex];
+            MonsterCard monster = MonsterZone[monsterIndex];
             MonsterZone[monsterIndex] = null;
             Graveyard.Add(monster);
         }
 
-        public void SendCardFromHandToGraveyard(params ICard[] cardList) {
-            foreach (ICard card in cardList) {
+        public void SendCardFromHandToGraveyard(params Card[] cardList) {
+            foreach (Card card in cardList) {
                 Hand.Remove(card);
                 Graveyard.Add(card);
             }

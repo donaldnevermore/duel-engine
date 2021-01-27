@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using DuelEngine.Cards;
+using DuelEngine.Domain;
 
 namespace DuelEngine.MonsterCards {
-    public class MysticDealer : IEffectMonsterCard {
+    public class MysticDealer : EffectMonsterCard {
         public string Name { get; set; } = "Mystic Dealer";
         public string ID { get; set; } = "120105006";
         public string Text { get; set; } = "hhh";
-        public Cards.Attribute Attribute { get; set; } = Cards.Attribute.Water;
+        public Domain.Attribute Attribute { get; set; } = Domain.Attribute.Water;
         public bool IsLegend { get; set; } = false;
         public int Level { get; set; } = 3;
         public int Attack { get; set; } = 1000;
@@ -16,7 +16,7 @@ namespace DuelEngine.MonsterCards {
 
         public void Effect(Player controller, Player opponent) {
             // TODO: reimplement this method
-            Duel duel = controller.Duel;
+            var duel = controller.Duel;
             if (duel.Phase != Phase.Main) {
                 return;
             }
@@ -37,12 +37,12 @@ namespace DuelEngine.MonsterCards {
         }
 
         private bool EffectCost(Player controller, Player opponent) {
-            var monsters = controller.Hand.FindAll(card => card is IMonsterCard monsterCard);
+            var monsters = controller.Hand.FindAll(card => card is MonsterCard monsterCard);
             if (monsters.Count <= 0) {
                 return false;
             }
 
-            var magicians = monsters.FindAll(card => ((IMonsterCard) card).Race == Race.Magician);
+            var magicians = monsters.FindAll(card => ((MonsterCard)card).Race == Race.Magician);
 
             return magicians.Count > 0;
         }

@@ -12,10 +12,10 @@ At an early stage.
 ```csharp
 var duel = new Duel {InitialDrawNumber = 4, DrawLimit = 5, ZoneNumber = 3, LifePoint = 8000};
 
-var deck1 = new List<ICard> {
+var deck1 = new List<Card> {
     new DarkSorcerer(), new DarkSorcerer(), new DarkSorcerer(), new Wolf(), new Wolf(), new Wolf()
 };
-var deck2 = new List<ICard> {
+var deck2 = new List<Card> {
     new DarkSorcerer(), new DarkSorcerer(), new DarkSorcerer(), new Wolf(), new Wolf(), new Wolf()
 };
 var player1 = new Player {Deck = deck1};
@@ -30,11 +30,11 @@ player1.DrawPhase();
 player1.Draw();
 
 player1.MainPhase();
-var monster = (IMonster) player1.Hand[0];
+var monster = (Monster) player1.Hand[0];
 player1.Summon(monster, 0);
 ```
 
-# TODO
+# TODO:
 
 - [x] Initial preparation
 - [x] Summon a monster
