@@ -5,7 +5,7 @@ using DuelEngine.Domain;
 namespace DuelEngine.MonsterCards {
     public class MysticDealer : EffectMonsterCard {
         public string Name { get; set; } = "Mystic Dealer";
-        public string ID { get; set; } = "120105006";
+        public string Id { get; set; } = "120105006";
         public string Text { get; set; } = "hhh";
         public Domain.Attribute Attribute { get; set; } = Domain.Attribute.Water;
         public bool IsLegend { get; set; } = false;

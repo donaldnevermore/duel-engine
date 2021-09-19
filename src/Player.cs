@@ -9,7 +9,7 @@ namespace DuelEngine {
         public int LifePoint { get; set; }
         public List<Card> Hand { get; } = new List<Card>();
         public List<Card> Graveyard { get; } = new List<Card>();
-        public MonsterCard[] MonsterZone { get; set; }
+        public MonsterCard?[] MonsterZone { get; set; }
         public Duel Duel { get; set; }
         public event EventHandler SelectMonsterEvent;
 

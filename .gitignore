@@ -1,13 +1,12 @@
 # IDEs
-.vscode
-.idea
-.vs
+.vscode/
+.idea/
+.vs/
 
-# Caches
-bin
-obj
+# Compiled
+bin/
+obj/
 
-# User-specific files
+# User-specific
 *.user
-
-.history
+global.json

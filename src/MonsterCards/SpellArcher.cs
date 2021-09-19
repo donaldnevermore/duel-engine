@@ -3,7 +3,7 @@
 namespace DuelEngine.MonsterCards {
     public sealed class SpellArcher : MonsterCard {
         public string Name { get; set; } = "Spell Archer";
-        public string ID { get; set; } = "120105008";
+        public string Id { get; set; } = "120105008";
         public string Text { get; set; } = "abc";
         public Attribute Attribute { get; set; } = Attribute.Wind;
         public bool IsLegend { get; set; } = false;
