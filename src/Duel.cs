@@ -1,4 +1,8 @@
-﻿namespace DuelEngine {
+﻿// Copyright (c) 2020 donaldnevermore
+// All rights reserved.
+// Licensed under the Apache License, Version 2.0. See the LICENSE file in the project root for more information.
+
+namespace DuelEngine {
     public class Duel {
         public Phase Phase { get; set; } = Phase.Draw;
         public int Turn { get; set; } = 1;

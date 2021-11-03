@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) 2020 donaldnevermore
+// All rights reserved.
+// Licensed under the Apache License, Version 2.0. See the LICENSE file in the project root for more information.
+
+using System.Collections.Generic;
 using NUnit.Framework;
 using DuelEngine.Domain;
 using DuelEngine.MonsterCards;
 
-namespace DuelEngine.Test {
+namespace DuelEngine {
     [TestFixture]
     public class DuelTest {
         private Duel duel;
