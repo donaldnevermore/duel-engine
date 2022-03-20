@@ -1,0 +1,10 @@
+.block {
+    width: 6rem;
+    height: 10rem;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.block:hover {
+    background: gainsboro;
+}
