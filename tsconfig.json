@@ -1,5 +1,9 @@
 {
     "compilerOptions": {
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "isolatedModules": true,
+        "target": "es6",
         "allowJs": true,
         "module": "commonjs",
         "skipLibCheck": true,
@@ -12,6 +16,6 @@
         "resolveJsonModule": true,
         "jsx": "react-jsx"
     },
-    "include": ["src"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

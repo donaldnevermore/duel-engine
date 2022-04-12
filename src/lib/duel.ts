@@ -10,8 +10,8 @@ export class Duel {
     public phase = Phase.Draw
     public turn = 1
 
-    private p1: Player
-    private p2: Player
+    private p1: Player|null = null
+    private p2: Player|null = null
 
     public isFirstTurn() {
         return this.turn == 1
@@ -29,13 +29,13 @@ export class Duel {
      * Set Life Points and draw initial cards.
      */
     public initialize() {
-        this.p1.duel = this
-        this.p2.duel = this
+        this.p1!.duel = this
+        this.p2!.duel = this
 
-        this.p1.lifePoints = settings.lifePoints
-        this.p2.lifePoints = settings.lifePoints
+        this.p1!.lifePoints = settings.lifePoints
+        this.p2!.lifePoints = settings.lifePoints
 
-        this.p1.initialDraw()
-        this.p2.initialDraw()
+        this.p1!.initialDraw()
+        this.p2!.initialDraw()
     }
 }

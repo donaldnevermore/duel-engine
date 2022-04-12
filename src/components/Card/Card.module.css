@@ -1,0 +1,117 @@
+.card {
+    width: 590px;
+    height: 860px;
+    padding: 14px;
+    background-color: blue;
+    box-sizing: border-box;
+}
+
+.main {
+    background-color: yellow;
+    height: 100%;
+}
+
+.head {
+    height: 48px;
+    font-size: 36px;
+    margin: 0 10px;
+}
+
+.image {
+    background-image: url("./flash.jpg");
+    background-size: cover;
+    height: 500px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin: 0 10px;
+}
+
+.info {
+    margin: 6px 10px 0 10px;
+    border: 1px solid black;
+    height: 260px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.text {
+    height: 192px;
+    padding: 6px;
+}
+
+.monster {
+    height: 54px;
+    background-color: gray;
+    display: flex;
+    box-sizing: border-box;
+    padding: 4px;
+}
+
+.level,
+.attribute {
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+
+.level {
+    background-image: url("./level.png");
+    background-size: cover;
+}
+
+.attribute {
+    background-image: url("./dark.png");
+    background-size: cover;
+}
+
+.atkdef {
+    display: flex;
+    align-items: flex-end;
+    margin: 0 64px;
+    color: white;
+}
+
+.atklabel {
+    height: 24px;
+    width: 36px;
+    font-size: 20px;
+    padding: 0 8px 4px 8px;
+    font-weight: bold;
+    text-align: center;
+    height: 24px;
+    font-size: 20px;
+    padding: 0 8px 4px 8px;
+    font-weight: bold;
+    text-align: center;
+    background-color: red;
+}
+
+.deflabel {
+    margin-left: 20px;
+    height: 24px;
+    width: 36px;
+    font-size: 20px;
+    padding: 0 8px 4px 8px;
+    font-weight: bold;
+    text-align: center;
+    background-color: blue;
+}
+
+.number {
+    height: 40px;
+    font-size: 34px;
+    font-weight: bold;
+    margin-left: 10px;
+    text-align: right;
+    width: 80px;
+}
+
+.foot {
+    margin: 0 10px;
+    font-size: 12px;
+    height: 18px;
+}

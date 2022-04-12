@@ -3,6 +3,8 @@
 .idea/
 .vs/
 
+mold/
+
 # Logs
 logs
 *.log

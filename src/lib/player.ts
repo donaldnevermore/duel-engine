@@ -10,11 +10,11 @@ import { settings } from "lib/domain/settings"
 import { Deck } from "./deck"
 
 export class Player {
-    public lifePoints: number
+    public lifePoints = 0
     public hand: Card[] = []
     public graveyard: Card[] = []
-    public monsterZone: MonsterCard[] = []
-    public duel: Duel
+    public monsterZone: (MonsterCard|null)[] = []
+    public duel: Duel|null = null
 
     public constructor(public deck: Deck) {
     }
@@ -29,23 +29,23 @@ export class Player {
     }
 
     public drawPhase() {
-        this.duel.phase = Phase.Draw
+        this.duel!.phase = Phase.Draw
     }
 
     public standbyPhase() {
-        this.duel.phase = Phase.Standby
+        this.duel!.phase = Phase.Standby
     }
 
     public mainPhase1() {
-        this.duel.phase = Phase.Main1
+        this.duel!.phase = Phase.Main1
     }
 
     public battlePhase() {
-        this.duel.phase = Phase.Battle
+        this.duel!.phase = Phase.Battle
     }
 
     public endPhase() {
-        this.duel.phase = Phase.End
+        this.duel!.phase = Phase.End
     }
 
     /**
@@ -62,7 +62,7 @@ export class Player {
      */
     public draw(n: number) {
         for (let i = 0; i < n; i++) {
-            const card = this.deck.main.shift()
+            const card = this.deck.main.shift() as Card
             this.addToHand(card)
         }
     }
@@ -76,7 +76,7 @@ export class Player {
 
     public turnEnd() {
         this.endPhase()
-        this.duel.turn++
+        this.duel!.turn++
     }
 
     /**
@@ -87,8 +87,8 @@ export class Player {
      * if your attack is lower, reduce your life point by the absolute difference, and destroy your monster.
      */
     public attack(opponent: Player, monsterIndex: number, targetIndex: number) {
-        const monster = this.monsterZone[monsterIndex]
-        const targetMonster = opponent.monsterZone[targetIndex]
+        const monster = this.monsterZone[monsterIndex] as MonsterCard
+        const targetMonster = opponent.monsterZone[targetIndex] as MonsterCard
         const amount = monster.attack - targetMonster.attack
         if (amount > 0) {
             opponent.lifePoints -= amount
@@ -108,7 +108,7 @@ export class Player {
      * Destroy a monster and send it to your graveyard.
      */
     public destroy(monsterIndex: number) {
-        const monster = this.monsterZone[monsterIndex]
+        const monster = this.monsterZone[monsterIndex] as MonsterCard
         this.monsterZone[monsterIndex] = null
         this.graveyard.push(monster)
     }

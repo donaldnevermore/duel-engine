@@ -14,7 +14,7 @@ module.exports = {
         extensions: [".js", ".ts", ".jsx", ".tsx", ".css", ".json"],
         alias: {
             components: path.resolve(__dirname, "src/components"),
-            lib: path.resolve(__dirname, "src/lib"),
+            lib: path.resolve(__dirname, "src/lib")
         }
     },
-};
+}
