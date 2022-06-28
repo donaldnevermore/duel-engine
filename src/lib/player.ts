@@ -13,19 +13,19 @@ export class Player {
     public lifePoints = 0
     public hand: Card[] = []
     public graveyard: Card[] = []
-    public monsterZone: (MonsterCard|null)[] = []
+    public monsterZone: (MonsterCard|undefined)[] = []
     public duel: Duel|null = null
 
     public constructor(public deck: Deck) {
     }
 
     /**
-     * Summon a monster to your monster zone.
+     * Summon a monster from your hand to the monster zone.
      */
-    public summon(monster: MonsterCard, position: number) {
-        const idx = this.hand.indexOf(monster)
-        this.hand.splice(idx, 1)
+    public summon(index: number, position: number) {
+        const monster = this.hand[index] as MonsterCard
         this.monsterZone[position] = monster
+        this.hand.splice(index, 1)
     }
 
     public drawPhase() {
@@ -62,7 +62,10 @@ export class Player {
      */
     public draw(n: number) {
         for (let i = 0; i < n; i++) {
-            const card = this.deck.main.shift() as Card
+            const card = this.deck.main.shift()
+            if (card === undefined) {
+                throw new Error("No cards")
+            }
             this.addToHand(card)
         }
     }
@@ -87,7 +90,10 @@ export class Player {
      * if your attack is lower, reduce your life point by the absolute difference, and destroy your monster.
      */
     public attack(opponent: Player, monsterIndex: number, targetIndex: number) {
-        const monster = this.monsterZone[monsterIndex] as MonsterCard
+        const monster = this.monsterZone[monsterIndex]
+        if (monster === undefined) {
+            throw new Error("No such a monster card")
+        }
         const targetMonster = opponent.monsterZone[targetIndex] as MonsterCard
         const amount = monster.attack - targetMonster.attack
         if (amount > 0) {
@@ -108,8 +114,11 @@ export class Player {
      * Destroy a monster and send it to your graveyard.
      */
     public destroy(monsterIndex: number) {
-        const monster = this.monsterZone[monsterIndex] as MonsterCard
-        this.monsterZone[monsterIndex] = null
+        const monster = this.monsterZone[monsterIndex]
+        if (monster === undefined) {
+            throw new Error("No such a monster card")
+        }
+        this.monsterZone[monsterIndex] = undefined
         this.graveyard.push(monster)
     }
 

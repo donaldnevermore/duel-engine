@@ -12,7 +12,7 @@ export class SkyStrikerAceRoze implements MonsterCard {
 这张卡特殊召唤。那之后，可以选对方场上1只表侧表示怪兽，直到回合结束时那个效果无效。"
     public attribute = Attribute.Light
     public level = 4
-    public attack = 1500
-    public defense = 1500
+    public attack = 1000
+    public defense = 1000
     public monsterType = MonsterType.Warrior
 }
