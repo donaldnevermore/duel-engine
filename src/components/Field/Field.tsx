@@ -1,12 +1,12 @@
-import React from "react"
+import React, { Component } from "react"
 import { Stack } from "@mui/material"
 import { Block } from "../Block/Block"
 import styles from "./Fields.module.css"
 
-export class Fields extends React.Component {
+export class Field extends Component {
     public render() {
         return (
-            <Stack className={styles.fields} spacing={2}>
+            <Stack className={styles.field} spacing={2}>
                 <Stack direction="row" spacing={2}>
                     {
                         [0, 1, 2, 3, 4, 5, 6].map((i) => ( <Block key={i}></Block> ))

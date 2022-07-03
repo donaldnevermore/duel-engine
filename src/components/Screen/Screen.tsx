@@ -1,6 +1,6 @@
 import React from "react"
 import { Grid, Stack } from "@mui/material"
-import { Fields } from "../Fields/Fields"
+import { Field } from "../Field/Field"
 
 export class Screen extends React.Component {
     /**
@@ -11,7 +11,7 @@ export class Screen extends React.Component {
             <Grid container>
                 <Grid item xs={2}></Grid>
                 <Grid item xs={8}>
-                    <Fields></Fields>
+                    <Field></Field>
                 </Grid>
                 <Grid item xs={2}></Grid>
             </Grid>
