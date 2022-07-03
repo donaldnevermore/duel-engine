@@ -2,7 +2,7 @@
     "name": "duel-engine",
     "productName": "duel-engine",
     "version": "0.3.0",
-    "description": "My Electron application description",
+    "description": "A simple YGO duel game",
     "main": ".webpack/main",
     "scripts": {
         "start": "electron-forge start",
@@ -25,7 +25,7 @@
                 {
                     "name": "@electron-forge/maker-squirrel",
                     "config": {
-                        "name": "ygo_duel"
+                        "name": "ygo_duel_engine"
                     }
                 },
                 {
