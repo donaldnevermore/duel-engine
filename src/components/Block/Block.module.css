@@ -1,6 +1,9 @@
 .block {
     border: 1px solid black;
     cursor: pointer;
+    width: 138px;
+    height: 192px;
+    padding: 10px;
 }
 
 .block:hover {

@@ -1,9 +1,13 @@
 import React from "react"
-import { Card } from "components/Card/Card"
+import { Stack } from "@mui/material"
+import { Block } from "../Block/Block"
 
 export function Hand() {
     return (
-        <Card></Card>
+        <Stack direction="row" spacing={2}>
+            <Block></Block>
+            <Block></Block>
+            <Block></Block>
+        </Stack>
     )
 }
-

@@ -1,7 +1,7 @@
-import React from "react"
+import React, { FC } from "react"
 import styles from "./Card.module.css"
 
-export function Card() {
+export const  Card: FC<any> = ({ card }) => {
     return (
         <div className={styles.card}>
             <main className={styles.main}>

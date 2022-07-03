@@ -11,10 +11,6 @@ module.exports = {
         rules: require("./webpack.rules"),
     },
     resolve: {
-        extensions: [".js", ".ts", ".jsx", ".tsx", ".css", ".json"],
-        alias: {
-            components: path.resolve(__dirname, "src/components"),
-            lib: path.resolve(__dirname, "src/lib")
-        }
+        extensions: [".js", ".ts", ".jsx", ".tsx", ".css", ".json"]
     },
 }

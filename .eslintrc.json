@@ -24,7 +24,7 @@
             {
                 "anonymous": "always",
                 "named": "never",
-                "asyncArrow": "never"
+                "asyncArrow": "always"
             }
         ],
         "arrow-spacing": "warn",

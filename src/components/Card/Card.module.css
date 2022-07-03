@@ -4,6 +4,9 @@
     padding: 14px;
     background-color: blue;
     box-sizing: border-box;
+    transform: scale(0.2);
+    transform-origin: top left;
+    margin: 10px;
 }
 
 .main {

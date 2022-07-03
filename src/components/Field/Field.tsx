@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Stack } from "@mui/material"
 import { Block } from "../Block/Block"
-import styles from "./Fields.module.css"
+import styles from "./Field.module.css"
 
 export class Field extends Component {
     public render() {
