@@ -1,13 +1,14 @@
-import React from "react"
+import React, { FC } from "react"
 import { Stack } from "@mui/material"
 import { Block } from "../Block/Block"
+import { Player } from "lib/player"
 
-export function Hand() {
+export const Hand: FC<{
+    player: Player
+}> = ({ player }) => {
     return (
         <Stack direction="row" spacing={2}>
-            <Block></Block>
-            <Block></Block>
-            <Block></Block>
+            {player.hand.map((card: any, i: number) => <Block card={card} key={i} />)}
         </Stack>
     )
 }

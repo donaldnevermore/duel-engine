@@ -2,16 +2,16 @@
 // All rights reserved.
 // Licensed under the Apache License, Version 2.0. See the LICENSE file in the project root for more information.
 
-import { Phase } from "lib/domain/phase"
+import { Phase } from "./domain/phase"
 import { Player } from "./player"
-import { settings } from "lib/domain/settings"
+import { settings } from "./domain/settings"
 
 export class Duel {
     public phase = Phase.Draw
     public turn = 1
 
-    private p1: Player|null = null
-    private p2: Player|null = null
+    private p1: Player | null = null
+    private p2: Player | null = null
 
     public isFirstTurn() {
         return this.turn == 1

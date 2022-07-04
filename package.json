@@ -116,7 +116,8 @@
         ],
         "moduleNameMapper": {
             "^components/(.*)": "<rootDir>/src/components/$1",
-            "^lib/(.*)": "<rootDir>/src/lib/$1"
+            "^lib/(.*)": "<rootDir>/src/lib/$1",
+            "^mold/(.*)": "<rootDir>/src/mold/$1"
         }
     }
 }

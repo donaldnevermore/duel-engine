@@ -1,6 +1,6 @@
 import { EffectMonsterCard } from "lib/domain/effect-monster-card"
-import { Attribute } from "lib/domain/attribute"
-import { MonsterType } from "lib/domain/monster-type"
+import type { Attribute } from "lib/domain/attribute"
+import type { MonsterType } from "lib/domain/monster-type"
 
 export class SkyStrikerAceRaye implements EffectMonsterCard {
     public name = "闪刀姬-零衣"
@@ -9,11 +9,11 @@ export class SkyStrikerAceRaye implements EffectMonsterCard {
         "这个卡名的①②的效果1回合各能使用1次。\
 ①：把这张卡解放才能发动。从额外卡组把1只「闪刀姬」怪兽在额外怪兽区域特殊召唤。这个效果在对方回合也能发动。\
 ②：这张卡在墓地存在的状态，自己场上的表侧表示的「闪刀姬」连接怪兽因对方的效果从场上离开的场合或者被战斗破坏的场合才能发动。这张卡特殊召唤。"
-    public attribute = Attribute.Dark
+    public attribute: Attribute = "dark"
     public level = 4
     public attack = 1500
     public defense = 1500
-    public monsterType = MonsterType.Warrior
+    public monsterType: MonsterType = "warrior"
 
     /*
         public  Effect( controller Player, Player opponent) {

@@ -1,9 +1,2 @@
-﻿export enum Attribute {
-    Light,
-    Dark,
-    Earth,
-    Water,
-    Fire,
-    Wind,
-    Divine
-}
+﻿export type Attribute =
+    "light" | "dark" | "earth" | "water" | "fire" | "wind" | "divine"

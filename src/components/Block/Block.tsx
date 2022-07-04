@@ -1,5 +1,5 @@
 import React, { FC, useState, MouseEvent } from "react"
-import { Popper, Box } from "@mui/material"
+import { Popper, Box, Button } from "@mui/material"
 
 import styles from "./Block.module.css"
 import { Card } from "../Card/Card"
@@ -23,7 +23,8 @@ export const Block: FC<{
         <div className={styles.block}>
             <Popper open={open}
                 anchorEl={anchorEl}>
-                <Box>sdfjlkjkljskdf</Box>
+                <Button>召唤</Button>
+                <Button>盖放</Button>
             </Popper>
 
             <Box onMouseEnter={handleOpen} onMouseLeave={handleClose}>

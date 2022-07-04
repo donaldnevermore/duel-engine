@@ -1,7 +1,16 @@
 import React, { FC } from "react"
 import styles from "./Card.module.css"
 
-export const  Card: FC<any> = ({ card }) => {
+export const Card: FC<any> = ({ card }) => {
+    if (card == null) {
+        return null
+    }
+
+    const attr = {
+        backgroundImage: `url("../../mold/attribute/jp/${card.attribute}.png")`,
+        backgroundSize: "cover"
+    }
+
     return (
         <div className={styles.card}>
             <main className={styles.main}>
@@ -10,17 +19,23 @@ export const  Card: FC<any> = ({ card }) => {
                 </div>
                 <div className={styles.info}>
                     <div className={styles.text}>
-                這個卡名的效果1回合只能使用1次。①：對方場上的怪獸數量比自己場上的怪獸多的場合，把這張卡從手卡丟棄才能發動。選自己的額外卡組1張卡給雙方確認。那之後，把對方的額外卡組確認，有選的卡的同名卡的場合，那些對方的同名卡全部除外。這個效果在對方回合也能發動。
+                        {card?.text}
                     </div>
                     <div className={styles.monster}>
-                        <div className={styles.level}>3</div>
+                        <div className={styles.level}>
+                            {card?.level}
+                        </div>
                         <div className={styles.atkdef}>
                             <div className={styles.atklabel}>ATK</div>
-                            <div className={styles.number}>0</div>
+                            <div className={styles.number}>
+                                {card?.attack}
+                            </div>
                             <div className={styles.deflabel}>DEF</div>
-                            <div className={styles.number}>1800</div>
+                            <div className={styles.number}>
+                                {card?.defense}
+                            </div>
                         </div>
-                        <div className={styles.attribute}>
+                        <div style={attr}>
                         </div>
                     </div>
                 </div>

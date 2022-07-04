@@ -1,4 +1,1 @@
-﻿export enum MonsterType {
-    Warrior,
-    Magician
-}
+﻿export type MonsterType = "warrior" | "magician"

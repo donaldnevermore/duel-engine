@@ -2,19 +2,19 @@
 // All rights reserved.
 // Licensed under the Apache License, Version 2.0. See the LICENSE file in the project root for more information.
 
-import { Card } from "lib/domain/card"
+import { Card } from "./domain/card"
 import { MonsterCard } from "lib/domain/monster-card"
-import { Duel } from "lib/duel"
-import { Phase } from "lib/domain/phase"
-import { settings } from "lib/domain/settings"
+import { Duel } from "./duel"
+import { Phase } from "./domain/phase"
+import { settings } from "./domain/settings"
 import { Deck } from "./deck"
 
 export class Player {
     public lifePoints = 0
     public hand: Card[] = []
     public graveyard: Card[] = []
-    public monsterZone: (MonsterCard|undefined)[] = []
-    public duel: Duel|null = null
+    public monsterZone: (MonsterCard | undefined)[] = []
+    public duel: Duel | null = null
 
     public constructor(public deck: Deck) {
     }

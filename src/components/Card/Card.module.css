@@ -21,7 +21,7 @@
 }
 
 .image {
-    background-image: url("./flash.jpg");
+    background-image: url("../../mold/flash.jpg");
     background-size: cover;
     height: 500px;
     border: 1px solid black;
@@ -62,12 +62,7 @@
 }
 
 .level {
-    background-image: url("./level.png");
-    background-size: cover;
-}
-
-.attribute {
-    background-image: url("./dark.png");
+    background-image: url("../../mold/star/level.png");
     background-size: cover;
 }
 
