@@ -3,7 +3,7 @@
 // Licensed under the Apache License, Version 2.0. See the LICENSE file in the project root for more information.
 
 import { Card } from "./domain/card"
-import { MonsterCard } from "lib/domain/monster-card"
+import { MonsterCard } from "./domain/monster-card"
 import { Duel } from "./duel"
 import { Phase } from "./domain/phase"
 import { settings } from "./domain/settings"

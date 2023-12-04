@@ -4,7 +4,7 @@
 
 import { Duel } from "./duel"
 import { Player } from "./player"
-import { Card } from "lib/domain/card"
+import { Card } from "./domain/card"
 import { SkyStrikerAceRaye } from "./monster-cards/sky-striker-ace-raye"
 import { SkyStrikerAceRoze } from "./monster-cards/sky-striker-ace-roze"
 import { Deck } from "./deck"

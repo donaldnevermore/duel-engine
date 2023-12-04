@@ -1,4 +1,4 @@
-﻿import { Player } from "lib/player"
+﻿// import { Player } from "lib/player"
 import { MonsterCard } from "./monster-card"
 
 export interface EffectMonsterCard extends MonsterCard {

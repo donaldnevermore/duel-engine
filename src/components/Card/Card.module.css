@@ -10,28 +10,30 @@
 }
 
 .main {
-    background-color: yellow;
+    background-color: green;
     height: 100%;
 }
 
 .head {
     height: 48px;
     font-size: 36px;
+    font-weight: bold;
     margin: 0 10px;
+    text-align: center;
 }
 
 .image {
-    background-image: url("../../mold/flash.jpg");
+    background-image: url("../../static/flash.jpg");
     background-size: cover;
     height: 500px;
-    border: 1px solid black;
+    border: 2px solid red;
     box-sizing: border-box;
     margin: 0 10px;
 }
 
 .info {
-    margin: 6px 10px 0 10px;
-    border: 1px solid black;
+    margin: 0 10px;
+    border-top: none;
     height: 260px;
     box-sizing: border-box;
     background-color: white;
@@ -40,11 +42,14 @@
 .text {
     height: 192px;
     padding: 6px;
+    border: 2px solid red;
 }
 
 .monster {
     height: 54px;
-    background-color: gray;
+    background-color: green;
+    border-right: 2px solid red;
+    border-left: 2px solid red;
     display: flex;
     box-sizing: border-box;
     padding: 4px;
@@ -54,7 +59,7 @@
 .attribute {
     width: 46px;
     height: 46px;
-    border-radius: 23px;
+    border-radius: 50%;
     font-size: 36px;
     font-weight: bold;
     text-align: center;
@@ -62,14 +67,14 @@
 }
 
 .level {
-    background-image: url("../../mold/star/level.png");
+    background-image: url("../../static/level.png");
     background-size: cover;
 }
 
 .atkdef {
     display: flex;
     align-items: flex-end;
-    margin: 0 64px;
+    margin: 8px 64px;
     color: white;
 }
 
@@ -109,7 +114,7 @@
 }
 
 .foot {
-    margin: 0 10px;
+    margin: 2px 10px 0 10px;
     font-size: 12px;
     height: 18px;
 }

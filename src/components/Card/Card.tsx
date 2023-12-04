@@ -1,15 +1,13 @@
 import React, { FC } from "react"
 import styles from "./Card.module.css"
+import { img } from "../../lib/img"
 
 export const Card: FC<any> = ({ card }) => {
     if (card == null) {
         return null
     }
 
-    const attr = {
-        backgroundImage: `url("../../mold/attribute/jp/${card.attribute}.png")`,
-        backgroundSize: "cover"
-    }
+    const url = img(card.attribute)
 
     return (
         <div className={styles.card}>
@@ -18,9 +16,6 @@ export const Card: FC<any> = ({ card }) => {
                 <div className={styles.image}>
                 </div>
                 <div className={styles.info}>
-                    <div className={styles.text}>
-                        {card?.text}
-                    </div>
                     <div className={styles.monster}>
                         <div className={styles.level}>
                             {card?.level}
@@ -35,8 +30,10 @@ export const Card: FC<any> = ({ card }) => {
                                 {card?.defense}
                             </div>
                         </div>
-                        <div style={attr}>
-                        </div>
+                        <img src={url} className={styles.attribute} alt="" />
+                    </div>
+                    <div className={styles.text}>
+                        {card?.text}
                     </div>
                 </div>
                 <footer className={styles.foot}>ⓒスタジオ·ダイス /集英社·テレビ東京·KONAMI</footer>

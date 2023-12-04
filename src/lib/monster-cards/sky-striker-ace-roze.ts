@@ -1,6 +1,6 @@
-import { MonsterCard } from "lib/domain/monster-card"
-import type { Attribute } from "lib/domain/attribute"
-import type { MonsterType } from "lib/domain/monster-type"
+import { MonsterCard } from "../domain/monster-card"
+import type { Attribute } from "../domain/attribute"
+import type { MonsterType } from "../domain/monster-type"
 
 export class SkyStrikerAceRoze implements MonsterCard {
     public name = "闪刀姬-露世"
